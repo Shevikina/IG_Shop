@@ -8,4 +8,5 @@
     <color name="OnSurfaceColor">#E5FDFB</color>
     <color name="BackgroundColor">#2E4552</color>
     <color name="OnBackgroundColor">#CACACA</color>
+    <color name="back_logo">#2E4552</color>
 </resources>
