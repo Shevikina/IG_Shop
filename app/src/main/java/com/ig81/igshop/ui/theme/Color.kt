@@ -13,3 +13,5 @@ val SurfaceColor = Color(0xFFFFFFFF)
 val OnSurfaceColor = Color(0xFFE5FDFB)
 val BackgroundColor = Color(0xFF2E4552)
 val OnBackgroundColor = Color(0xFFCACACA)
+
+val StarColor = Color(0xFFFFBD13)
