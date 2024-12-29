@@ -26,7 +26,7 @@ import com.ig81.igshop.ui.theme.StarColor
 import com.ig81.igshop.ui.theme.robotoFonts
 
 @Composable
-fun JetSimpleStar(color: Color, modifier: Modifier = Modifier.size(16.dp)){
+fun JetSimpleStar(color: Color, modifier: Modifier = Modifier.size(16.dp)) {
     Icon(
         painter = painterResource(id = R.drawable.ic_fluent_star_24_filled),
         tint = color,
@@ -34,13 +34,14 @@ fun JetSimpleStar(color: Color, modifier: Modifier = Modifier.size(16.dp)){
         modifier = modifier
     )
 }
+
 @Composable
-fun JetStar(isActive:Boolean = false, modifier: Modifier = Modifier) {
+fun JetStar(isActive: Boolean = false, modifier: Modifier = Modifier) {
     Box(
         contentAlignment = Alignment.Center,
         modifier = modifier.size(16.dp)
-    ){
-        if (!isActive){
+    ) {
+        if (!isActive) {
             JetSimpleStar(IGShopTheme.colorScheme.background)
             JetSimpleStar(IGShopTheme.colorScheme.surface.copy(0.25f))
         }
@@ -52,7 +53,7 @@ fun JetStar(isActive:Boolean = false, modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun JetCircularRatingBar(rating: Int, modifier: Modifier){
+fun JetCircularRatingBar(rating: Int, modifier: Modifier) {
     if (rating !in 0..5) return
 
     Box(
@@ -60,7 +61,7 @@ fun JetCircularRatingBar(rating: Int, modifier: Modifier){
         modifier = modifier
             .background(color = IGShopTheme.colorScheme.background)
             .size(width = 56.dp, height = 56.dp)
-    ){
+    ) {
         Box(
             contentAlignment = Alignment.Center,
             modifier = Modifier
@@ -82,42 +83,39 @@ fun JetCircularRatingBar(rating: Int, modifier: Modifier){
                 textAlign = TextAlign.Center
             )
         }
-        JetStar(rating>0,
+        JetStar(
+            rating > 0,
             Modifier
                 .align(Alignment.TopCenter)
                 .offset(y = (-1).dp)
         )
-        Box (
+        Box(
             Modifier
                 .fillMaxWidth()
                 .align(Alignment.Center)
                 .padding(bottom = 5.dp)
 
-        ){
-            JetStar(rating>4, Modifier.align(Alignment.CenterStart))
-            JetStar(rating>1, Modifier.align(Alignment.CenterEnd))
+        ) {
+            JetStar(rating > 4, Modifier.align(Alignment.CenterStart))
+            JetStar(rating > 1, Modifier.align(Alignment.CenterEnd))
         }
-        Box (
+        Box(
             Modifier
                 .fillMaxWidth()
                 .align(Alignment.BottomCenter)
                 .padding(start = 8.dp, end = 8.dp, bottom = 2.dp)
 
-        ){
-            JetStar(rating>3, Modifier
-                .align(Alignment.CenterStart)
-            )
-            JetStar(rating>2, Modifier
-                    .align(Alignment.CenterEnd)
-            )
+        ) {
+            JetStar(rating > 3, Modifier.align(Alignment.CenterStart))
+            JetStar(rating > 2, Modifier.align(Alignment.CenterEnd))
         }
     }
 }
 
 @Preview(showBackground = false)
 @Composable
-fun JetCircularRatingBarPreview(){
-    IGShopTheme{
+fun JetCircularRatingBarPreview() {
+    IGShopTheme {
         JetCircularRatingBar(
             rating = 3,
             modifier = Modifier
