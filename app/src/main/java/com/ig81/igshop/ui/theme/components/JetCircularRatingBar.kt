@@ -2,7 +2,6 @@ package com.ig81.igshop.ui.theme.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import com.microsoft.fluent.mobile.icons.R
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.offset
@@ -23,7 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ig81.igshop.ui.theme.IGShopTheme
 import com.ig81.igshop.ui.theme.StarColor
-import com.ig81.igshop.ui.theme.robotoFonts
+import com.microsoft.fluent.mobile.icons.R
 
 @Composable
 fun JetSimpleStar(color: Color, modifier: Modifier = Modifier.size(16.dp)) {
@@ -76,11 +75,12 @@ fun JetCircularRatingBar(rating: Int, backgroundColor:Color, modifier: Modifier)
         {
             Text(
                 text = rating.toString(),
-                color = IGShopTheme.colorScheme.surface,
-                fontSize = 14.sp,
-                fontFamily = robotoFonts,
-                fontWeight = FontWeight.Medium,
-                textAlign = TextAlign.Center
+                style = IGShopTheme.typography.bodyLarge.copy(
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.Medium,
+                    textAlign = TextAlign.Center,
+                    color = IGShopTheme.colorScheme.surface
+                )
             )
         }
         JetStar(

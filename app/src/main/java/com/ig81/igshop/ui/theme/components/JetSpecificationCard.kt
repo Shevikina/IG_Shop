@@ -11,12 +11,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ig81.igshop.ui.theme.IGShopTheme
-import com.ig81.igshop.ui.theme.robotoFonts
 
 data class CardItemInfo(val title: String, val rating: Int)
 
@@ -27,10 +25,10 @@ fun JetCardItem(info: CardItemInfo, modifier: Modifier = Modifier) {
     ) {
         Text(
             text = info.title,
-            fontSize = 12.sp,
-            fontFamily = robotoFonts,
-            fontWeight = FontWeight.Normal,
-            color = IGShopTheme.colorScheme.onBackground,
+            style = IGShopTheme.typography.bodyLarge.copy(
+                fontSize = 12.sp,
+                color = IGShopTheme.colorScheme.onBackground
+            ),
             modifier = Modifier.align(Alignment.TopCenter)
         )
         JetCircularRatingBar(
@@ -58,9 +56,10 @@ fun JetSpecificationCard(specifications: List<CardItemInfo>, modifier: Modifier 
         ) {
             Text(
                 text = "Спецификации",
-                fontFamily = robotoFonts,
-                fontSize = 12.sp,
-                color = IGShopTheme.colorScheme.onBackground.copy(0.5f),
+                style = IGShopTheme.typography.bodyLarge.copy(
+                    fontSize = 12.sp,
+                    color = IGShopTheme.colorScheme.onBackground.copy(0.5f)
+                ),
                 modifier = Modifier
                     .align(Alignment.TopCenter)
                     .padding(12.dp)
