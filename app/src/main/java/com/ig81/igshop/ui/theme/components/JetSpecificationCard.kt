@@ -83,7 +83,7 @@ fun JetSpecificationCard(specifications: List<CardItemInfo>, modifier: Modifier 
 
 @Preview(showBackground = false)
 @Composable
-fun JetSpecificationCardPreview() {
+private fun JetSpecificationCardPreview() {
     IGShopTheme {
         Box(
             contentAlignment = Alignment.Center,

@@ -115,7 +115,7 @@ fun JetCircularRatingBar(rating: Int, backgroundColor:Color, modifier: Modifier)
 
 @Preview(showBackground = false)
 @Composable
-fun JetCircularRatingBarPreview() {
+private fun JetCircularRatingBarPreview() {
     IGShopTheme {
         Box(
             contentAlignment = Alignment.Center,
