@@ -11,7 +11,6 @@ val OnSurfaceColor = Color(0xFFCEE5E5)
 val BackgroundColor = Color(0xFF2E4552)
 
 val TertiaryColor = Color(0xFFFFFFFF) // not named in the Figma project
-//val OnTertiaryColor = Color(0xFFCACACA) // not named in the Figma project
+val OnBackgroundColor = Color(0xFFCACACA) // not named in the Figma project
 
-val OnBackgroundColor = Color(0xFFCACACA) // does not exist in the Figma project
 val StarColor = Color(0xFFFFBD13) // does not exist in the Figma project
