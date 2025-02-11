@@ -32,7 +32,7 @@ fun JetRatingBar(rating: Int, modifier: Modifier = Modifier) {
     }
 }
 
-@Preview(showBackground = true)
+@Preview
 @Composable
 private fun JetRatingBarPreview() {
     IGShopTheme {
