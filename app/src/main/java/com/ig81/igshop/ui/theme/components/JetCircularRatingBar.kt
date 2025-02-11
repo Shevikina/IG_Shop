@@ -21,7 +21,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ig81.igshop.ui.theme.IGShopTheme
-import com.ig81.igshop.ui.theme.StarColor
 import com.microsoft.fluent.mobile.icons.R
 
 @Composable
@@ -46,7 +45,7 @@ fun JetStar(isActive: Boolean = false, tintBackground:Color, modifier: Modifier 
             JetSimpleStar(IGShopTheme.colorScheme.tertiary.copy(0.3f))
         }
         JetSimpleStar(
-            color = if (isActive) StarColor else tintBackground,
+            color = if (isActive) IGShopTheme.colorScheme.onTertiary else tintBackground,
             modifier = Modifier.size(if (isActive) 16.dp else 11.dp)
         )
     }
