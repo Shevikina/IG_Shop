@@ -52,7 +52,7 @@ fun JetSpecificationCard(specifications: List<CardItemInfo>, modifier: Modifier 
             modifier = Modifier
                 .fillMaxSize()
                 .clip(RoundedCornerShape(60.dp, 60.dp, 32.dp, 32.dp))
-                .background(IGShopTheme.colorScheme.surface.copy(0.1f))
+                .background(IGShopTheme.colorScheme.tertiary.copy(0.1f))
         ) {
             Text(
                 text = "Спецификации",
@@ -70,7 +70,7 @@ fun JetSpecificationCard(specifications: List<CardItemInfo>, modifier: Modifier 
                     .size(315.dp, 113.dp)
                     .align(Alignment.BottomCenter)
                     .clip(RoundedCornerShape(56.dp, 56.dp, 16.dp, 16.dp))
-                    .background(IGShopTheme.colorScheme.surface.copy(0.1f))
+                    .background(IGShopTheme.colorScheme.tertiary.copy(0.1f))
             )
             {
                 JetCardItem(specifications.first(), Modifier.align(Alignment.CenterStart))

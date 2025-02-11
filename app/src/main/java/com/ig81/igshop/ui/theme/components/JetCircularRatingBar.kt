@@ -43,7 +43,7 @@ fun JetStar(isActive: Boolean = false, tintBackground:Color, modifier: Modifier 
         if (!isActive) {
             JetSimpleStar(IGShopTheme.colorScheme.background)
             JetSimpleStar(tintBackground)
-            JetSimpleStar(IGShopTheme.colorScheme.surface.copy(0.4f))
+            JetSimpleStar(IGShopTheme.colorScheme.tertiary.copy(0.3f))
         }
         JetSimpleStar(
             color = if (isActive) StarColor else tintBackground,
@@ -67,7 +67,7 @@ fun JetCircularRatingBar(rating: Int, backgroundColor:Color, modifier: Modifier)
                 .padding(5.dp)
                 .border(
                     5.dp,
-                    IGShopTheme.colorScheme.surface.copy(0.25f),
+                    IGShopTheme.colorScheme.tertiary.copy(0.25f),
                     RoundedCornerShape(24.dp)
                 )
                 .size(47.dp)
@@ -79,7 +79,7 @@ fun JetCircularRatingBar(rating: Int, backgroundColor:Color, modifier: Modifier)
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Medium,
                     textAlign = TextAlign.Center,
-                    color = IGShopTheme.colorScheme.surface
+                    color = IGShopTheme.colorScheme.tertiary
                 )
             )
         }
