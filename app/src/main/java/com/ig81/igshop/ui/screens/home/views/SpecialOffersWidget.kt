@@ -43,7 +43,7 @@ fun SpecialOffersWidget() {
             CardInfo("№ 103 436", 0.23f, selected = true)
         )
         LazyRow(
-            horizontalArrangement = Arrangement.spacedBy((-166).dp),
+            horizontalArrangement = Arrangement.spacedBy((-148).dp),
             reverseLayout = true,
         ) {
             items(cards) { card ->
