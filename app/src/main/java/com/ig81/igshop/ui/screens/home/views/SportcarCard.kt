@@ -41,14 +41,18 @@ private fun Int.getFormatted(): String {
     return res.trim()
 }
 
+data class SportscarInfo(
+    val carName: String,
+    val carType: String,
+    var imagePath: String,
+    var rating: Int,
+    var price: Int
+)
+
 @Composable
 fun SportcarCard(
     modifier: Modifier = Modifier,
-    carName: String,
-    carType: String,
-    imagePath: String,
-    rating: Int,
-    price: Int,
+    info: SportscarInfo
 ) {
     val cardColor = Color(0xFFEBEBEB)
 
@@ -66,7 +70,7 @@ fun SportcarCard(
             modifier = Modifier.padding(16.dp)
         ) {
             AsyncImage(
-                model = imagePath,
+                model = info.imagePath,
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
@@ -83,7 +87,7 @@ fun SportcarCard(
                                 color = IGShopTheme.colorScheme.tertiary
                             )
                         ) {
-                            append(carName)
+                            append(info.carName)
                         }
                         withStyle(
                             SpanStyle(
@@ -92,7 +96,7 @@ fun SportcarCard(
                             )
                         ) {
                             append("\n")
-                            append(carType)
+                            append(info.carType)
                         }
                     },
                     style = IGShopTheme.typography.bodyLarge.copy(
@@ -107,12 +111,12 @@ fun SportcarCard(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     JetRatingBar(
-                        rating,
+                        info.rating,
                         modifier = Modifier.size(92.dp, 16.dp)
                     )
                     Spacer(Modifier.weight(1f))
                     Text(
-                        text = "${price.getFormatted()} Kr",
+                        text = "${info.price.getFormatted()} Kr",
                         color = cardColor,
                         style = IGShopTheme.typography.bodyLarge.copy(
                             fontSize = 12.sp,
@@ -135,12 +139,14 @@ private fun TourCardPreview() {
                 .padding(32.dp)
         ) {
             SportcarCard(
-                carName = "Lamba-A",
-                carType = "Классический спорткар",
-                imagePath = "file:///android_asset/App5_Image1.jpg",
-                rating = 4,
-                price = 177000,
-                modifier = Modifier.width(288.dp)
+                modifier = Modifier.width(288.dp),
+                info = SportscarInfo(
+                    carName = "Lamba-A",
+                    carType = "Классический спорткар",
+                    imagePath = "file:///android_asset/App5_Image1.jpg",
+                    rating = 4,
+                    price = 177000
+                )
             )
         }
     }
