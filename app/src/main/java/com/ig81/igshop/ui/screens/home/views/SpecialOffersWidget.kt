@@ -13,10 +13,12 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.ig81.igshop.R
 import com.ig81.igshop.ui.theme.IGShopTheme
 
 data class CardInfo(val num: String, val alpha: Float, var selected: Boolean = false)
@@ -27,7 +29,7 @@ fun SpecialOffersWidget() {
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         Text(
-            text = "Спецпредложения",
+            text = stringResource(id = R.string.special_offers_title),
             style = IGShopTheme.typography.bodyLarge.copy(
                 fontWeight = FontWeight.Bold,
                 fontSize = 18.sp,
