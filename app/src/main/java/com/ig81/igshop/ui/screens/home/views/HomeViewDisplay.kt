@@ -20,9 +20,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.ig81.igshop.R
 import com.ig81.igshop.ui.theme.IGShopTheme
 import com.ig81.igshop.ui.theme.components.JetSearchField
-import com.ig81.igshop.R
 
 @Composable
 fun HomeViewDisplay() {
@@ -42,7 +42,7 @@ fun HomeViewDisplay() {
                     hint = stringResource(id = R.string.search_hint),
                     value = "",
                     modifier = Modifier.width(250.dp)
-                )
+                ) {}
                 Spacer(modifier = Modifier.weight(1f))
                 Image(
                     painter = painterResource(id = R.drawable.ic_main_icon),
@@ -53,7 +53,7 @@ fun HomeViewDisplay() {
             }
             SpecialOffersWidget()
             Spacer(modifier = Modifier.height(32.dp))
-            AchievementsWidget()
+            AchievementsWidget {}
         }
         Spacer(modifier = Modifier.height(32.dp))
         SportscarsWidget()

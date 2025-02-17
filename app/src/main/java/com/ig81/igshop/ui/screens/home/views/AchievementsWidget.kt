@@ -1,6 +1,7 @@
 package com.ig81.igshop.ui.screens.home.views
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -14,6 +15,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -30,9 +32,13 @@ private fun CustomDiv() = Divider(
 )
 
 @Composable
-fun AchievementsWidget() {
+fun AchievementsWidget(
+    modifier: Modifier = Modifier,
+    onClick: (() -> Unit)? = null
+) {
     Column(
-        verticalArrangement = Arrangement.spacedBy(24.dp)
+        verticalArrangement = Arrangement.spacedBy(24.dp),
+        modifier = modifier
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             Text(
@@ -57,6 +63,11 @@ fun AchievementsWidget() {
                     IGShopTheme.colorScheme.surface,
                     IGShopTheme.shapes.small
                 )
+                .let {
+                    if (onClick != null) it
+                        .clip(IGShopTheme.shapes.small)
+                        .clickable(onClick = onClick) else it
+                }
                 .padding(start = 12.dp, end = 25.dp, top = 18.dp, bottom = 20.dp)
         ) {
             UserRatingCard(1, "Джонни Джонсон", 123)
@@ -77,7 +88,7 @@ private fun AchievementsWidgetPreview() {
                 .background(IGShopTheme.colorScheme.background)
                 .padding(32.dp)
         ) {
-            AchievementsWidget()
+            AchievementsWidget {}
         }
     }
 }

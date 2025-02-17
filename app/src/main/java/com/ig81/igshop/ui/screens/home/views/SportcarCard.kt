@@ -1,6 +1,7 @@
 package com.ig81.igshop.ui.screens.home.views
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -46,7 +47,8 @@ data class SportscarInfo(
     val carType: String,
     var imagePath: String,
     var rating: Int,
-    var price: Int
+    var price: Int,
+    val onClick: (() -> Unit)? = null
 )
 
 @Composable
@@ -63,6 +65,11 @@ fun SportcarCard(
                 IGShopTheme.colorScheme.surface,
                 IGShopTheme.shapes.medium
             )
+            .let {
+                if (info.onClick != null) it
+                    .clip(IGShopTheme.shapes.medium)
+                    .clickable(onClick = info.onClick) else it
+            }
     ) {
         Row(
             horizontalArrangement = Arrangement.spacedBy(24.dp),
@@ -146,7 +153,7 @@ private fun TourCardPreview() {
                     imagePath = "file:///android_asset/App5_Image1.jpg",
                     rating = 4,
                     price = 177000
-                )
+                ) {}
             )
         }
     }

@@ -1,6 +1,7 @@
 package com.ig81.igshop.ui.screens.home.views
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -13,6 +14,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -21,10 +23,16 @@ import androidx.compose.ui.unit.sp
 import com.ig81.igshop.R
 import com.ig81.igshop.ui.theme.IGShopTheme
 
-data class CardInfo(val num: String, val alpha: Float, var selected: Boolean = false)
+data class CardInfo(
+    val num: String,
+    val alpha: Float,
+    var selected: Boolean = false,
+    val onClick: (() -> Unit)? = null
+)
 
 @Composable
-fun SpecialOffersWidget() {
+fun SpecialOffersWidget(
+) {
     Column(
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
@@ -39,14 +47,14 @@ fun SpecialOffersWidget() {
         )
 
         val cards = listOf(
-            CardInfo("№ 364 154", 0.03f),
-            CardInfo("№ 121 453", 0.08f),
-            CardInfo("№ 105 423", 0.18f),
-            CardInfo("№ 103 436", 0.23f, selected = true)
+            CardInfo("№ 364 154", 0.03f, onClick = {}),
+            CardInfo("№ 121 453", 0.08f, onClick = {}),
+            CardInfo("№ 105 423", 0.18f, onClick = {}),
+            CardInfo("№ 103 436", 0.23f, selected = true, onClick = {})
         )
         LazyRow(
             horizontalArrangement = Arrangement.spacedBy((-148).dp),
-            reverseLayout = true,
+            reverseLayout = true
         ) {
             items(cards) { card ->
                 Box(
@@ -64,6 +72,11 @@ fun SpecialOffersWidget() {
                         card.alpha,
                         modifier = Modifier
                             .size(206.dp, 125.dp)
+                            .let {
+                                if (card.onClick != null) it
+                                    .clip(IGShopTheme.shapes.dialog)
+                                    .clickable(onClick = card.onClick) else it
+                            }
                     )
                 }
             }

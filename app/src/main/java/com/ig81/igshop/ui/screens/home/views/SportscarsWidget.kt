@@ -43,14 +43,14 @@ fun SportscarsWidget() {
                 imagePath = "file:///android_asset/App5_Image1.jpg",
                 rating = 4,
                 price = 177000
-            ),
+            ) {},
             SportscarInfo(
                 carName = "Lamba Sport",
                 carType = "Премиум",
                 imagePath = "file:///android_asset/App5_Image2.jpg",
                 rating = 5,
                 price = 500000
-            )
+            ) {}
         )
         LazyRow(
             horizontalArrangement = Arrangement.spacedBy(16.dp)
