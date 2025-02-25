@@ -30,6 +30,13 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+sealed class NavScreen {
+    data object Home : NavScreen()
+    data object Achievements : NavScreen()
+    data object Search : NavScreen()
+    data class CarPage(val carId: Int) : NavScreen()
+}
+
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     Text(
