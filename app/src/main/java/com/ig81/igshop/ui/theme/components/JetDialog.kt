@@ -83,14 +83,14 @@ fun JetDialog(
                     text = title,
                     style = IGShopTheme.typography.bodyLarge.copy(
                         fontWeight = FontWeight.Bold,
-                        color = IGShopTheme.colorScheme.tertiary
+                        color = IGShopTheme.colorScheme.tertiary //Color(0xFFFFFFFF)
                     )
                 )
                 Text(
                     text = body,
                     style = IGShopTheme.typography.bodyLarge.copy(
                         fontSize = 14.sp,
-                        color = IGShopTheme.colorScheme.tertiary,
+                        color = IGShopTheme.colorScheme.tertiary, //Color(0xFFFFFFFF)
                         textAlign = TextAlign.Center,
                         letterSpacing = 0.em,
                     )
