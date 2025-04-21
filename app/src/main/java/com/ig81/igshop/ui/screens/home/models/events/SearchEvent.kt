@@ -1,4 +1,4 @@
-package com.ig81.igshop.models.events
+package com.ig81.igshop.ui.screens.home.models.events
 
 sealed class SearchEvent {
     data class ChangeQuery(val newValue: String) : SearchEvent()
