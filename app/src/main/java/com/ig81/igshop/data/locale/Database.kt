@@ -1,5 +1,6 @@
 package com.ig81.igshop.data.locale
 
+import com.ig81.igshop.ui.screens.home.models.SpecialOfferInfo
 import com.ig81.igshop.ui.screens.home.models.SportsCarInfo
 import com.ig81.igshop.ui.screens.home.models.UserRatingInfo
 
@@ -29,6 +30,7 @@ object Database {
             shieldsRating = 4
         )
     )
+
     val achievementsList = listOf(
         UserRatingInfo(
             number = 1,
@@ -57,6 +59,31 @@ object Database {
             name = "Тин Тин",
             balls = 55,
             isVip = true
+        )
+    )
+
+    val specialOfferList = listOf(
+        SpecialOfferInfo(
+            number = "№ 364 154",
+            selected = false,
+            backgroundAlpha = 0.03f
+        ),
+        SpecialOfferInfo(
+            number = "№ 121 453",
+            selected = false,
+            width = 0.87f
+        ),
+        SpecialOfferInfo(
+            number = "№ 105 423",
+            selected = false,
+            backgroundAlpha = 0.1f,
+            width = 0.74f
+        ),
+        SpecialOfferInfo(
+            number = "№ 103 436",
+            selected = true,
+            backgroundAlpha = 0.23f,
+            width = 0.6f
         )
     )
 }

@@ -17,31 +17,31 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.ig81.igshop.data.locale.Database
+import com.ig81.igshop.ui.screens.home.models.SpecialOfferInfo
 import com.ig81.igshop.ui.theme.IGShopTheme
 import com.ig81.igshop.utils.dashedBorder
 
 @Composable
 fun SpecialOfferCard(
-    number: String,
-    selected: Boolean = false,
-    backgroundAlpha: Float = 0.05f,
+    info: SpecialOfferInfo,
     modifier: Modifier = Modifier
 ) {
     Box(
         modifier = modifier
             .background(
-                IGShopTheme.colorScheme.tertiary.copy(backgroundAlpha),
-                IGShopTheme.shapes.dialog
+                color = IGShopTheme.colorScheme.tertiary.copy(info.backgroundAlpha),
+                shape = IGShopTheme.shapes.dialog
             )
             .dashedBorder(
-                2.dp,
-                IGShopTheme.colorScheme.secondary,
-                IGShopTheme.shapes.dialog,
+                width = 2.dp,
+                color = IGShopTheme.colorScheme.secondary,
+                shape = IGShopTheme.shapes.dialog,
                 on = 6.dp,
-                off = if (selected) 0.dp else 6.dp
+                off = if (info.selected) 0.dp else 6.dp
             )
     ) {
-        if (selected) {
+        if (info.selected) {
             Icon(
                 painter = painterResource(id = com.microsoft.fluent.mobile.icons.R.drawable.ic_fluent_contact_card_32_filled),
                 contentDescription = null,
@@ -52,7 +52,7 @@ fun SpecialOfferCard(
             )
         }
         Text(
-            text = number,
+            text = info.number,
             style = IGShopTheme.typography.bodyLarge.copy(
                 fontSize = 12.sp,
                 lineHeight = 14.06.sp,
@@ -76,36 +76,14 @@ private fun SpecialOfferCardPreview() {
                 .background(IGShopTheme.colorScheme.background)
                 .padding(32.dp)
         ) {
-            SpecialOfferCard(
-                "№ 364 154",
-                false,
-                0.03f,
-                modifier = Modifier
-                    .height(125.dp)
-                    .fillMaxWidth()
-            )
-            SpecialOfferCard(
-                "№ 121 453",
-                false,
-                modifier = Modifier
-                    .height(125.dp)
-                    .fillMaxWidth(0.87f)
-            )
-            SpecialOfferCard(
-                "№ 105 423",
-                false,
-                0.1f,
-                modifier = Modifier
-                    .height(125.dp)
-                    .fillMaxWidth(0.74f)
-            )
-            SpecialOfferCard(
-                "№ 103 436",
-                true,
-                modifier = Modifier
-                    .height(125.dp)
-                    .fillMaxWidth(0.6f)
-            )
+            Database.specialOfferList.forEach { info ->
+                SpecialOfferCard(
+                    info = info,
+                    modifier = Modifier
+                        .height(125.dp)
+                        .fillMaxWidth(info.width)
+                )
+            }
         }
     }
 }
