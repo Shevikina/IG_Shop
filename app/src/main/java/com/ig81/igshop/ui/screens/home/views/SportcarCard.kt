@@ -28,6 +28,7 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
+import com.ig81.igshop.data.locale.Database
 import com.ig81.igshop.ui.screens.home.models.SportsCarInfo
 import com.ig81.igshop.ui.theme.IGShopTheme
 import com.ig81.igshop.ui.theme.components.JetRatingBar
@@ -44,9 +45,10 @@ private fun Int.getFormatted(): String {
 }
 
 @Composable
-fun SportcarCard(
+fun SportCarCard(
     modifier: Modifier = Modifier,
-    info: SportsCarInfo
+    info: SportsCarInfo,
+    onClick: (() -> Unit)? = null
 ) {
     val cardColor = Color(0xFFEBEBEB)
 
@@ -58,9 +60,9 @@ fun SportcarCard(
                 IGShopTheme.shapes.medium
             )
             .let {
-                if (info.onClick != null) it
+                if (onClick != null) it
                     .clip(IGShopTheme.shapes.medium)
-                    .clickable(onClick = info.onClick) else it
+                    .clickable(onClick = onClick) else it
             }
     ) {
         Row(
@@ -137,15 +139,10 @@ private fun TourCardPreview() {
                 .background(IGShopTheme.colorScheme.background)
                 .padding(32.dp)
         ) {
-            SportcarCard(
+            SportCarCard(
                 modifier = Modifier.width(288.dp),
-                info = SportsCarInfo(
-                    carName = "Lamba-A",
-                    carType = "Классический спорткар",
-                    imagePath = "file:///android_asset/App5_Image1.jpg",
-                    rating = 4,
-                    price = 177000
-                ) {}
+                info = Database.sportsCarList[0],
+                onClick = {}
             )
         }
     }
