@@ -1,4 +1,4 @@
-package com.ig81.igshop.ui.screens.home.models.actions
+package com.ig81.igshop.ui.screens.car.page.models
 
 sealed class CarPageAction {
     data class ShowDialog(

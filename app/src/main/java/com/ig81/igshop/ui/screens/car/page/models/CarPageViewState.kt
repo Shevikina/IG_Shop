@@ -1,4 +1,4 @@
-package com.ig81.igshop.ui.screens.home.models.view_states
+package com.ig81.igshop.ui.screens.car.page.models
 
 sealed class CarPageViewState {
     data object Loading : CarPageViewState()

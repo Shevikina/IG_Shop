@@ -1,4 +1,4 @@
-package com.ig81.igshop.ui.screens.home.models.view_states
+package com.ig81.igshop.ui.screens.achievements.models
 
 sealed class AchievementsViewState {
     data object Loading : AchievementsViewState()

@@ -1,4 +1,4 @@
-package com.ig81.igshop.ui.screens.home.models.events
+package com.ig81.igshop.ui.screens.achievements.models
 
 sealed class AchievementsEvent {
     data object EnterScreen : AchievementsEvent()

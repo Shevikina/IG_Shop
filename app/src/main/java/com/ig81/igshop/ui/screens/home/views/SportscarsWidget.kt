@@ -19,6 +19,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ig81.igshop.R
+import com.ig81.igshop.ui.screens.home.models.SportsCarInfo
 import com.ig81.igshop.ui.theme.IGShopTheme
 
 
@@ -37,14 +38,14 @@ fun SportscarsWidget() {
             )
         )
         val cars = listOf(
-            SportscarInfo(
+            SportsCarInfo(
                 carName = "Lamba-A",
                 carType = "Классический спорткар",
                 imagePath = "file:///android_asset/App5_Image1.jpg",
                 rating = 4,
                 price = 177000
             ) {},
-            SportscarInfo(
+            SportsCarInfo(
                 carName = "Lamba Sport",
                 carType = "Премиум",
                 imagePath = "file:///android_asset/App5_Image2.jpg",

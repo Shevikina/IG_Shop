@@ -21,14 +21,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ig81.igshop.R
+import com.ig81.igshop.ui.screens.home.models.CardInfo
 import com.ig81.igshop.ui.theme.IGShopTheme
-
-data class CardInfo(
-    val num: String,
-    val alpha: Float,
-    var selected: Boolean = false,
-    val onClick: (() -> Unit)? = null
-)
 
 @Composable
 fun SpecialOffersWidget(

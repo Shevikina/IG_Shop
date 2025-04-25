@@ -1,4 +1,4 @@
-package com.ig81.igshop.ui.screens.home.models.events
+package com.ig81.igshop.ui.screens.car.page.models
 
 sealed class CarPageEvent {
     data class EnterScreen(val carId: Int) : CarPageEvent()
