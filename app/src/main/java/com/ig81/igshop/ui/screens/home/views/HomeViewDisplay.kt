@@ -21,11 +21,12 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.ig81.igshop.R
+import com.ig81.igshop.ui.screens.home.models.HomeEvent
 import com.ig81.igshop.ui.theme.IGShopTheme
 import com.ig81.igshop.ui.theme.components.JetSearchField
 
 @Composable
-fun HomeViewDisplay() {
+fun HomeViewDisplay(dispatcher: (HomeEvent) -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -41,8 +42,9 @@ fun HomeViewDisplay() {
                 JetSearchField(
                     hint = stringResource(id = R.string.search_hint),
                     value = "",
-                    modifier = Modifier.width(250.dp)
-                ) {}
+                    modifier = Modifier.width(250.dp),
+                    onClick = { dispatcher.invoke(HomeEvent.OpenSearchScreen) }
+                )
                 Spacer(modifier = Modifier.weight(1f))
                 Image(
                     painter = painterResource(id = R.drawable.ic_main_icon),
@@ -53,10 +55,10 @@ fun HomeViewDisplay() {
             }
             SpecialOffersWidget()
             Spacer(modifier = Modifier.height(32.dp))
-            AchievementsWidget {}
+            AchievementsWidget { dispatcher.invoke(HomeEvent.OpenAchievementsScreen) }
         }
         Spacer(modifier = Modifier.height(32.dp))
-        SportscarsWidget()
+        SportsCarsWidget(dispatcher)
     }
 }
 
@@ -64,6 +66,6 @@ fun HomeViewDisplay() {
 @Composable
 private fun HomeViewDisplayPreview() {
     IGShopTheme {
-        HomeViewDisplay()
+        HomeViewDisplay {}
     }
 }

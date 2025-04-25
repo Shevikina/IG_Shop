@@ -19,12 +19,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ig81.igshop.R
-import com.ig81.igshop.ui.screens.home.models.SportsCarInfo
+import com.ig81.igshop.data.locale.Database
+import com.ig81.igshop.ui.screens.home.models.HomeEvent
 import com.ig81.igshop.ui.theme.IGShopTheme
 
 
 @Composable
-fun SportscarsWidget() {
+fun SportsCarsWidget(dispatcher: (HomeEvent) -> Unit) {
     Column(
         verticalArrangement = Arrangement.spacedBy(8.dp),
         modifier = Modifier.padding(start = 32.dp)
@@ -37,27 +38,15 @@ fun SportscarsWidget() {
                 color = IGShopTheme.colorScheme.onBackground
             )
         )
-        val cars = listOf(
-            SportsCarInfo(
-                carName = "Lamba-A",
-                carType = "Классический спорткар",
-                imagePath = "file:///android_asset/App5_Image1.jpg",
-                rating = 4,
-                price = 177000
-            ) {},
-            SportsCarInfo(
-                carName = "Lamba Sport",
-                carType = "Премиум",
-                imagePath = "file:///android_asset/App5_Image2.jpg",
-                rating = 5,
-                price = 500000
-            ) {}
-        )
+
         LazyRow(
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            items(cars) { info ->
-                SportcarCard(Modifier.width(288.dp), info)
+            items(Database.sportsCarList) { info ->
+                SportCarCard(
+                    modifier = Modifier.width(288.dp),
+                    info = info,
+                    onClick = { dispatcher.invoke(HomeEvent.OpenSportsCarPageScreen(info.id)) })
             }
         }
     }
@@ -65,7 +54,7 @@ fun SportscarsWidget() {
 
 @Preview
 @Composable
-private fun SportscarsWidgetPreview() {
+private fun SportsCarsWidgetPreview() {
     IGShopTheme {
         Column(
             modifier = Modifier
@@ -74,7 +63,7 @@ private fun SportscarsWidgetPreview() {
         ) {
 
             Spacer(modifier = Modifier.height(32.dp))
-            SportscarsWidget()
+            SportsCarsWidget {}
         }
     }
 }
