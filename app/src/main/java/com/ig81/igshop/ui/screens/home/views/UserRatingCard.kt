@@ -21,15 +21,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
+import com.ig81.igshop.data.locale.Database
+import com.ig81.igshop.ui.screens.home.models.UserRatingInfo
 import com.ig81.igshop.ui.theme.IGShopTheme
 import kotlin.math.pow
 
 @Composable
 fun UserRatingCard(
-    number: Int,
-    name: String,
-    balls: Int,
-    imagePath: String = "",
+    userRatingInfo: UserRatingInfo,
     modifier: Modifier = Modifier
 ) {
     Row(
@@ -37,18 +36,23 @@ fun UserRatingCard(
         verticalAlignment = Alignment.CenterVertically,
         modifier = modifier.padding(horizontal = 7.dp)
     ) {
-        val numAlpha = 1 / (2.0.pow(number - 1))
+        val numAlpha =
+            if (userRatingInfo.number > 3)
+                0f
+            else
+                1 / (2.0f.pow(userRatingInfo.number - 1))
+
         Text(
-            text = number.toString(),
+            text = userRatingInfo.number.toString(),
             style = IGShopTheme.typography.bodyLarge.copy(
                 fontSize = 14.sp,
                 fontWeight = FontWeight.Bold,
                 lineHeight = 16.41.sp,
-                color = IGShopTheme.colorScheme.tertiary.copy(alpha = numAlpha.toFloat())
+                color = IGShopTheme.colorScheme.tertiary.copy(alpha = numAlpha)
             )
         )
         AsyncImage(
-            model = if (imagePath.isEmpty()) "file:///android_asset/user_image.png" else imagePath,
+            model = userRatingInfo.imagePath,
             contentDescription = null,
             modifier = Modifier
                 .padding(horizontal = 16.dp)
@@ -61,7 +65,7 @@ fun UserRatingCard(
                 .padding(2.dp)
         )
         Text(
-            text = name,
+            text = userRatingInfo.name,
             style = IGShopTheme.typography.bodyLarge.copy(
                 fontSize = 14.sp,
                 fontWeight = FontWeight.Medium,
@@ -71,7 +75,7 @@ fun UserRatingCard(
         )
         Spacer(modifier = Modifier.weight(1f))
         Text(
-            text = "$balls б.",
+            text = "${userRatingInfo.balls} б.",
             style = IGShopTheme.typography.bodyLarge.copy(
                 fontSize = 14.sp,
                 fontWeight = FontWeight.Medium,
@@ -82,9 +86,21 @@ fun UserRatingCard(
     }
 }
 
+
 @Preview
 @Composable
 private fun UserRatingCardPreview() {
+    IGShopTheme {
+        UserRatingCard(
+            Database.achievementsList[0],
+            modifier = Modifier
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun UserRatingCardsPreview() {
     IGShopTheme {
         Box(
             modifier = Modifier
@@ -100,37 +116,15 @@ private fun UserRatingCardPreview() {
                     )
                     .padding(start = 12.dp, end = 25.dp, top = 18.dp, bottom = 20.dp)
             ) {
-                UserRatingCard(
-                    1,
-                    "Джонни Джонсон",
-                    123,
-                    "",
-                    Modifier
-                )
-                Divider(
-                    modifier = Modifier.padding(vertical = 8.dp),
-                    thickness = 2.dp,
-                    color = IGShopTheme.colorScheme.tertiary.copy(0.25f)
-                )
-                UserRatingCard(
-                    2,
-                    "Мэри Мэроу",
-                    102,
-                    "",
-                    Modifier
-                )
-                Divider(
-                    modifier = Modifier.padding(vertical = 8.dp),
-                    thickness = 2.dp,
-                    color = IGShopTheme.colorScheme.tertiary.copy(0.25f)
-                )
-                UserRatingCard(
-                    3,
-                    "Дики Дуо",
-                    71,
-                    "",
-                    Modifier
-                )
+                Database.achievementsList.forEach { userInfo ->
+                    UserRatingCard(userInfo)
+                    if (userInfo != Database.achievementsList.last())
+                        Divider(
+                            modifier = Modifier.padding(vertical = 8.dp),
+                            thickness = 2.dp,
+                            color = IGShopTheme.colorScheme.tertiary.copy(0.25f)
+                        )
+                }
             }
         }
     }
