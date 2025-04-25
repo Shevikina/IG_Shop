@@ -22,6 +22,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.ig81.igshop.data.locale.Database
 import com.ig81.igshop.ui.theme.IGShopTheme
 
 @Composable
@@ -70,11 +71,11 @@ fun AchievementsWidget(
                 }
                 .padding(start = 12.dp, end = 25.dp, top = 18.dp, bottom = 20.dp)
         ) {
-            UserRatingCard(1, "Джонни Джонсон", 123)
-            CustomDiv()
-            UserRatingCard(2, "Мэри Мэроу", 102)
-            CustomDiv()
-            UserRatingCard(3, "Дики Дуо", 71)
+            Database.achievementsList.take(3).forEach { userInfo ->
+                UserRatingCard(userInfo)
+                if (userInfo != Database.achievementsList.last())
+                    CustomDiv()
+            }
         }
     }
 }
