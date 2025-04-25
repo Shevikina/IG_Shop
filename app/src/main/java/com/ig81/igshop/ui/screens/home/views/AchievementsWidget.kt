@@ -71,9 +71,10 @@ fun AchievementsWidget(
                 }
                 .padding(start = 12.dp, end = 25.dp, top = 18.dp, bottom = 20.dp)
         ) {
-            Database.achievementsList.take(3).forEach { userInfo ->
+            val userList = Database.achievementsList.take(3)
+            userList.forEach { userInfo ->
                 UserRatingCard(userInfo)
-                if (userInfo != Database.achievementsList.last())
+                if (userInfo != userList.last())
                     CustomDiv()
             }
         }
