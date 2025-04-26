@@ -14,8 +14,8 @@ object Database {
             rating = 4,
             price = 177000,
             speedRating = 4,
-            caseRating = 5,
-            shieldsRating = 3,
+            corpusRating = 5,
+            shieldRating = 3,
             description = "Лучший спорткар на всём Внешнем кольце. Его модернезированные версии завоевывают первые места на всех крупных соревнованиях в галактике!"
         ),
         SportsCarInfo(
@@ -26,8 +26,8 @@ object Database {
             rating = 5,
             price = 500000,
             speedRating = 5,
-            caseRating = 5,
-            shieldsRating = 4
+            corpusRating = 5,
+            shieldRating = 4
         )
     )
 

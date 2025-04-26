@@ -4,4 +4,9 @@
     <string name="achievements_and_awards_title">Достижения и награды</string>
     <string name="our_new_products_title">Наши новинки</string>
     <string name="search_hint">Найти спорткар ...</string>
+    <string name="specifications_title">Спецификации</string>
+    <string name="description_title">Описание</string>
+    <string name="speed_title">Скорость</string>
+    <string name="сorpus_title">Корпус</string>
+    <string name="shield_title">Щиты</string>
 </resources>

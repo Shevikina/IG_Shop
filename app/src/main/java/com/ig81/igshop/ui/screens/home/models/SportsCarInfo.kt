@@ -8,7 +8,7 @@ data class SportsCarInfo(
     val rating: Int,
     val price: Int,
     val speedRating: Int,
-    val caseRating: Int,
-    val shieldsRating: Int,
+    val corpusRating: Int,
+    val shieldRating: Int,
     val description: String = ""
 )

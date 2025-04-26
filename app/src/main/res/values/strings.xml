@@ -5,4 +5,9 @@
     <string name="achievements_and_awards_title">Achievements and awards</string>
     <string name="our_new_products_title">Our new products</string>
     <string name="search_hint">Find a sportcar ...</string>
+    <string name="specifications_title">Specifications</string>
+    <string name="description_title">Description</string>
+    <string name="speed_title">Speed</string>
+    <string name="сorpus_title">Corpus</string>
+    <string name="shield_title">Shield</string>
 </resources>
