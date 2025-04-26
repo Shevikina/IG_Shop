@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Divider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -24,10 +23,12 @@ import coil3.compose.AsyncImage
 import com.ig81.igshop.data.locale.Database
 import com.ig81.igshop.data.locale.ui.models.UserRatingInfo
 import com.ig81.igshop.ui.theme.IGShopTheme
+import com.ig81.igshop.ui.theme.components.JetDivider
 import kotlin.math.pow
 
 @Composable
 fun UserRatingCard(
+    idx: Int,
     userRatingInfo: UserRatingInfo,
     modifier: Modifier = Modifier
 ) {
@@ -43,7 +44,7 @@ fun UserRatingCard(
                 1 / (2.0f.pow(userRatingInfo.number - 1))
 
         Text(
-            text = userRatingInfo.number.toString(),
+            text = (idx+1).toString(),
             style = IGShopTheme.typography.bodyLarge.copy(
                 fontSize = 14.sp,
                 fontWeight = FontWeight.Bold,
@@ -92,7 +93,8 @@ fun UserRatingCard(
 private fun UserRatingCardPreview() {
     IGShopTheme {
         UserRatingCard(
-            Database.achievementsList[0],
+            idx = 0,
+            userRatingInfo = Database.achievementsList[0],
             modifier = Modifier
         )
     }
@@ -116,14 +118,40 @@ private fun UserRatingCardsPreview() {
                     )
                     .padding(start = 12.dp, end = 25.dp, top = 18.dp, bottom = 20.dp)
             ) {
-                Database.achievementsList.forEach { userInfo ->
-                    UserRatingCard(userInfo)
+                Database.achievementsList.forEachIndexed { idx, userInfo ->
+                    UserRatingCard(idx, userInfo)
                     if (userInfo != Database.achievementsList.last())
-                        Divider(
-                            modifier = Modifier.padding(vertical = 8.dp),
-                            thickness = 2.dp,
-                            color = IGShopTheme.colorScheme.tertiary.copy(0.25f)
-                        )
+                        JetDivider()
+                }
+            }
+        }
+    }
+}
+
+@Preview
+@Composable
+private fun VipUserRatingCardsPreview() {
+    IGShopTheme {
+        val userList = Database.achievementsList.filter { it.isVip }
+
+        Box(
+            modifier = Modifier
+                .background(IGShopTheme.colorScheme.background)
+                .padding(32.dp)
+        ) {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(
+                        IGShopTheme.colorScheme.surface,
+                        IGShopTheme.shapes.small
+                    )
+                    .padding(start = 12.dp, end = 25.dp, top = 18.dp, bottom = 20.dp)
+            ) {
+                userList.forEachIndexed { idx, userInfo ->
+                    UserRatingCard(idx, userInfo)
+                    if (userInfo != userList.last())
+                        JetDivider()
                 }
             }
         }

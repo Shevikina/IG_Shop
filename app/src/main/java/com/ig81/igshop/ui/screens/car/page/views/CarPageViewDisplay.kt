@@ -3,13 +3,13 @@ package com.ig81.igshop.ui.screens.car.page.views
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Divider
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -22,6 +22,7 @@ import com.ig81.igshop.ui.screens.car.page.models.CarPageEvent
 import com.ig81.igshop.ui.screens.car.page.views.components.DescriptionCard
 import com.ig81.igshop.ui.screens.car.page.views.components.SpecificationCard
 import com.ig81.igshop.ui.theme.IGShopTheme
+import com.ig81.igshop.ui.theme.components.JetDivider
 import com.ig81.igshop.ui.theme.components.JetIconButton
 import com.ig81.igshop.ui.theme.components.JetSportCarCard
 import com.ig81.igshop.ui.theme.components.JetTextButton
@@ -54,11 +55,7 @@ fun CarPageViewDisplay(carId: Int, dispatcher: (CarPageEvent) -> Unit) {
                 corpusRating = cardInfo.corpusRating,
                 shieldRating = cardInfo.shieldRating
             )
-            Divider(
-                modifier = Modifier.padding(horizontal = 30.dp),
-                thickness = 2.dp,
-                color = IGShopTheme.colorScheme.tertiary.copy(0.25f)
-            )
+            JetDivider(PaddingValues(horizontal = 30.dp))
             DescriptionCard(
                 description = cardInfo.description
             )
