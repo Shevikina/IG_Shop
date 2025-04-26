@@ -1,4 +1,4 @@
-package com.ig81.igshop.ui.screens.home.models
+package com.ig81.igshop.data.locale
 
 data class SpecialOfferInfo(
     val number: String,

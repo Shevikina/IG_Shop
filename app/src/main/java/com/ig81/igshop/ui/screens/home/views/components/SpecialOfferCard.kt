@@ -1,4 +1,4 @@
-package com.ig81.igshop.ui.screens.home.views
+package com.ig81.igshop.ui.screens.home.views.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -18,7 +18,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ig81.igshop.data.locale.Database
-import com.ig81.igshop.ui.screens.home.models.SpecialOfferInfo
+import com.ig81.igshop.data.locale.SpecialOfferInfo
 import com.ig81.igshop.ui.theme.IGShopTheme
 import com.ig81.igshop.utils.dashedBorder
 

@@ -19,6 +19,8 @@ import androidx.compose.ui.unit.dp
 import com.ig81.igshop.R
 import com.ig81.igshop.data.locale.Database
 import com.ig81.igshop.ui.screens.car.page.models.CarPageEvent
+import com.ig81.igshop.ui.screens.car.page.views.components.DescriptionCard
+import com.ig81.igshop.ui.screens.car.page.views.components.SpecificationCard
 import com.ig81.igshop.ui.theme.IGShopTheme
 import com.ig81.igshop.ui.theme.components.JetIconButton
 import com.ig81.igshop.ui.theme.components.JetSportCarCard

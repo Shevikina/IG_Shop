@@ -1,4 +1,4 @@
-package com.ig81.igshop.ui.screens.car.page.views
+package com.ig81.igshop.ui.screens.car.page.views.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement

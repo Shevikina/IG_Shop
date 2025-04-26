@@ -29,7 +29,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import com.ig81.igshop.data.locale.Database
-import com.ig81.igshop.ui.screens.home.models.SportsCarInfo
+import com.ig81.igshop.data.locale.SportsCarInfo
 import com.ig81.igshop.ui.theme.IGShopTheme
 
 private fun Int.getFormatted(): String {

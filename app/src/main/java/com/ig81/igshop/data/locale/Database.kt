@@ -1,9 +1,5 @@
 package com.ig81.igshop.data.locale
 
-import com.ig81.igshop.ui.screens.home.models.SpecialOfferInfo
-import com.ig81.igshop.ui.screens.home.models.SportsCarInfo
-import com.ig81.igshop.ui.screens.home.models.UserRatingInfo
-
 object Database {
     val sportsCarList = listOf(
         SportsCarInfo(

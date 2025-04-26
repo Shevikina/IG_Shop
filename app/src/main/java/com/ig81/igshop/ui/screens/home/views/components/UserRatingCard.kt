@@ -1,4 +1,4 @@
-package com.ig81.igshop.ui.screens.home.views
+package com.ig81.igshop.ui.screens.home.views.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import com.ig81.igshop.data.locale.Database
-import com.ig81.igshop.ui.screens.home.models.UserRatingInfo
+import com.ig81.igshop.data.locale.UserRatingInfo
 import com.ig81.igshop.ui.theme.IGShopTheme
 import kotlin.math.pow
 

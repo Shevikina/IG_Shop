@@ -22,6 +22,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.ig81.igshop.R
 import com.ig81.igshop.ui.screens.home.models.HomeEvent
+import com.ig81.igshop.ui.screens.home.views.components.AchievementsWidget
+import com.ig81.igshop.ui.screens.home.views.components.SpecialOffersWidget
+import com.ig81.igshop.ui.screens.home.views.components.SportsCarsWidget
 import com.ig81.igshop.ui.theme.IGShopTheme
 import com.ig81.igshop.ui.theme.components.JetSearchField
 
