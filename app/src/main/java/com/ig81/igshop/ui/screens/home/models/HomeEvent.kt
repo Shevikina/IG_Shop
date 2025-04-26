@@ -6,5 +6,4 @@ sealed class HomeEvent {
     data object OpenSearchScreen : HomeEvent()
     data class OpenSportsCarPageScreen(val carId: Int) : HomeEvent()
     data object OpenAchievementsScreen : HomeEvent()
-
 }
