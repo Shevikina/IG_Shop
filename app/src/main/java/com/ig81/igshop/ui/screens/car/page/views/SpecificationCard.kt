@@ -1,4 +1,4 @@
-package com.ig81.igshop.ui.theme.components
+package com.ig81.igshop.ui.screens.car.page.views
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -19,9 +19,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ig81.igshop.R
 import com.ig81.igshop.ui.theme.IGShopTheme
+import com.ig81.igshop.ui.theme.components.JetCircularRatingBar
 
 @Composable
-fun JetCardItem(title: String, rating: Int, modifier: Modifier = Modifier) {
+private fun SpecificationCardItem(title: String, rating: Int, modifier: Modifier = Modifier) {
     Box(
         modifier = modifier.size(81.dp, 74.dp)
     ) {
@@ -44,7 +45,7 @@ fun JetCardItem(title: String, rating: Int, modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun JetSpecificationCard(
+fun SpecificationCard(
     speedRating: Int,
     corpusRating: Int,
     shieldRating: Int,
@@ -78,15 +79,15 @@ fun JetSpecificationCard(
                 .padding(vertical = 19.dp, horizontal = 4.dp)
         )
         {
-            JetCardItem(
+            SpecificationCardItem(
                 title = stringResource(id = R.string.speed_title),
                 rating = speedRating
             )
-            JetCardItem(
+            SpecificationCardItem(
                 title = stringResource(id = R.string.сorpus_title),
                 rating = corpusRating
             )
-            JetCardItem(
+            SpecificationCardItem(
                 title = stringResource(id = R.string.shield_title),
                 rating = shieldRating
             )
@@ -96,7 +97,7 @@ fun JetSpecificationCard(
 
 @Preview(showBackground = false)
 @Composable
-private fun JetSpecificationCardPreview() {
+private fun SpecificationCardPreview() {
     IGShopTheme {
         Box(
             contentAlignment = Alignment.Center,
@@ -104,7 +105,7 @@ private fun JetSpecificationCardPreview() {
                 .background(IGShopTheme.colorScheme.background)
                 .padding(start = 32.dp, end = 36.dp)
         ) {
-            JetSpecificationCard(
+            SpecificationCard(
                 4, 5, 3,
                 modifier = Modifier.fillMaxWidth()
             )
