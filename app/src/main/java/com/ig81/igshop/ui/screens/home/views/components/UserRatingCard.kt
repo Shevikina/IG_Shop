@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import com.ig81.igshop.data.locale.Database
-import com.ig81.igshop.data.locale.UserRatingInfo
+import com.ig81.igshop.data.locale.ui.models.UserRatingInfo
 import com.ig81.igshop.ui.theme.IGShopTheme
 import kotlin.math.pow
 
