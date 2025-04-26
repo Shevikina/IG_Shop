@@ -12,12 +12,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
+import com.ig81.igshop.R
 import com.ig81.igshop.ui.theme.IGShopTheme
 
 @Composable
@@ -43,7 +45,7 @@ fun DescriptionCard(description: String, modifier: Modifier = Modifier) {
                 .padding(36.dp, 12.dp, 33.dp, 23.dp)
         ) {
             Text(
-                text = "Описание",
+                text = stringResource(id = R.string.description_title),
                 style = IGShopTheme.typography.bodyLarge.copy(
                     fontSize = 12.sp,
                     textAlign = TextAlign.Center,
