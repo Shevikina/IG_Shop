@@ -22,6 +22,7 @@ import com.ig81.igshop.R
 import com.ig81.igshop.data.locale.Database
 import com.ig81.igshop.ui.screens.home.models.HomeEvent
 import com.ig81.igshop.ui.theme.IGShopTheme
+import com.ig81.igshop.ui.theme.components.JetSportCarCard
 
 
 @Composable
@@ -43,7 +44,7 @@ fun SportsCarsWidget(dispatcher: (HomeEvent) -> Unit) {
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             items(Database.sportsCarList) { info ->
-                SportCarCard(
+                JetSportCarCard(
                     modifier = Modifier.width(288.dp),
                     info = info,
                     onClick = { dispatcher.invoke(HomeEvent.OpenSportsCarPageScreen(info.id)) })

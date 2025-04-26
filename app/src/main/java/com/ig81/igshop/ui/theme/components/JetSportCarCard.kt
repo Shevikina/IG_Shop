@@ -1,4 +1,4 @@
-package com.ig81.igshop.ui.screens.home.views
+package com.ig81.igshop.ui.theme.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -31,7 +31,6 @@ import coil3.compose.AsyncImage
 import com.ig81.igshop.data.locale.Database
 import com.ig81.igshop.ui.screens.home.models.SportsCarInfo
 import com.ig81.igshop.ui.theme.IGShopTheme
-import com.ig81.igshop.ui.theme.components.JetRatingBar
 
 private fun Int.getFormatted(): String {
     var res = ""
@@ -45,7 +44,7 @@ private fun Int.getFormatted(): String {
 }
 
 @Composable
-fun SportCarCard(
+fun JetSportCarCard(
     modifier: Modifier = Modifier,
     info: SportsCarInfo,
     onClick: (() -> Unit)? = null
@@ -139,7 +138,7 @@ private fun TourCardPreview() {
                 .background(IGShopTheme.colorScheme.background)
                 .padding(32.dp)
         ) {
-            SportCarCard(
+            JetSportCarCard(
                 modifier = Modifier.width(288.dp),
                 info = Database.sportsCarList[0],
                 onClick = {}
