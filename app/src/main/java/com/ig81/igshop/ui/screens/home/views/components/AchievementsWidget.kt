@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -24,13 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ig81.igshop.data.locale.Database
 import com.ig81.igshop.ui.theme.IGShopTheme
-
-@Composable
-private fun CustomDiv() = Divider(
-    modifier = Modifier.padding(vertical = 8.dp),
-    thickness = 2.dp,
-    color = IGShopTheme.colorScheme.tertiary.copy(0.25f)
-)
+import com.ig81.igshop.ui.theme.components.JetDivider
 
 @Composable
 fun AchievementsWidget(
@@ -72,10 +65,10 @@ fun AchievementsWidget(
                 .padding(start = 12.dp, end = 25.dp, top = 18.dp, bottom = 20.dp)
         ) {
             val userList = Database.achievementsList.take(3)
-            userList.forEach { userInfo ->
-                UserRatingCard(userInfo)
+            userList.forEachIndexed { idx, userInfo ->
+                UserRatingCard(idx, userInfo)
                 if (userInfo != userList.last())
-                    CustomDiv()
+                    JetDivider()
             }
         }
     }
