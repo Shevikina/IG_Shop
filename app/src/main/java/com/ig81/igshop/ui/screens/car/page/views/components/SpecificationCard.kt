@@ -70,12 +70,13 @@ fun SpecificationCard(
         )
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(32.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier
                 .background(
                     color = IGShopTheme.colorScheme.tertiary.copy(0.1f),
                     shape = RoundedCornerShape(56.dp, 56.dp, 16.dp, 16.dp)
                 )
+                .fillMaxWidth()
                 .padding(vertical = 19.dp, horizontal = 4.dp)
         )
         {
@@ -101,9 +102,7 @@ private fun SpecificationCardPreview() {
     IGShopTheme {
         Box(
             contentAlignment = Alignment.Center,
-            modifier = Modifier
-                .background(IGShopTheme.colorScheme.background)
-                .padding(start = 32.dp, end = 36.dp)
+            modifier = Modifier.background(IGShopTheme.colorScheme.background)
         ) {
             SpecificationCard(
                 4, 5, 3,

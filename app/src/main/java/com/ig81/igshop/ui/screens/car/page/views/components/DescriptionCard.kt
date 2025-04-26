@@ -5,8 +5,8 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.sizeIn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -41,7 +41,8 @@ fun DescriptionCard(description: String, modifier: Modifier = Modifier) {
                     IGShopTheme.colorScheme.tertiary.copy(0.1f),
                     RoundedCornerShape(16.dp, 16.dp, 56.dp, 56.dp)
                 )
-                .sizeIn(315.dp, 112.dp)
+                .heightIn(112.dp)
+                .fillMaxWidth()
                 .padding(36.dp, 12.dp, 33.dp, 23.dp)
         ) {
             Text(
@@ -80,7 +81,7 @@ private fun DescriptionCardPreview() {
                 .padding(horizontal = 34.dp)
         ) {
             DescriptionCard(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier,
                 description = "Лучший спорткар на всём Внешнем кольце. Его модернезированные версии завоевывают первые места на всех крупных соревнованиях в галактике!"
             )
         }
