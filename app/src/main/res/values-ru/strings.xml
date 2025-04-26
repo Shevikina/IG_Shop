@@ -11,4 +11,7 @@
     <string name="shield_title">Щиты</string>
     <string name="request_btn">Отправить заявку</string>
     <string name="view_full_btn">Посмотреть весь список</string>
+    <string name="achievements_title">Достижения</string>
+    <string name="buyers_title">Покупатели</string>
+    <string name="vip_buyers_title">VIP-покупатели</string>
 </resources>

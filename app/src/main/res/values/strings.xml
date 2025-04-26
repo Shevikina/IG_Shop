@@ -12,4 +12,7 @@
     <string name="shield_title">Shield</string>
     <string name="request_btn">Send a request</string>
     <string name="view_full_btn">View full list</string>
+    <string name="achievements_title">Achievements</string>
+    <string name="buyers_title">Buyers</string>
+    <string name="vip_buyers_title">VIP-buyers</string>
 </resources>
