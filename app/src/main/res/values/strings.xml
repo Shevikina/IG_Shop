@@ -10,4 +10,6 @@
     <string name="speed_title">Speed</string>
     <string name="сorpus_title">Corpus</string>
     <string name="shield_title">Shield</string>
+    <string name="request_btn">Send a request</string>
+    <string name="view_full_btn">View full list</string>
 </resources>
