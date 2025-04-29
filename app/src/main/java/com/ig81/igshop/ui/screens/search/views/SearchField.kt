@@ -3,8 +3,10 @@ package com.ig81.igshop.ui.screens.search.views
 import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
@@ -48,12 +50,26 @@ fun SearchField(
         modifier = modifier.height(47.dp),
         singleLine = true,
         shape = IGShopTheme.shapes.small,
-        placeholder = { Text("Найти спорткар ...") },
+        placeholder = {
+            Text(
+                text = "Введите название...",
+                style = IGShopTheme.typography.bodyLarge.copy(
+                    fontSize = 12.sp,
+                    fontWeight = FontWeight.Medium,
+                    color = IGShopTheme.colorScheme.onSurface.copy(0.5f)
+                )
+            )
+        },
         colors = TextFieldDefaults.colors(
+            // container
             unfocusedContainerColor = IGShopTheme.colorScheme.surface,
             focusedContainerColor = IGShopTheme.colorScheme.surface,
+            // text
             unfocusedTextColor = IGShopTheme.colorScheme.onSurface,
-            focusedTextColor = IGShopTheme.colorScheme.onSurface
+            focusedTextColor = IGShopTheme.colorScheme.onSurface,
+            // indicator line
+            focusedIndicatorColor = Color.Transparent,
+            unfocusedIndicatorColor = Color.Transparent
         ),
         textStyle = IGShopTheme.typography.bodyLarge.copy(
             fontSize = 12.sp,
@@ -98,7 +114,22 @@ fun SearchField(
 
 @Preview
 @Composable
-private fun SearchFieldPreview() {
+private fun SearchFieldWithPlaceholderPreview() {
+    IGShopTheme {
+        val searchVal = remember { mutableStateOf("") }
+
+        SearchField(
+            modifier = Modifier.fillMaxWidth(),
+            searchValue = searchVal,
+            onValueChange = { value -> Log.i("MyLog", value) },
+            onLeadingIconClicked = {}
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun SearchFieldWithValuePreview() {
     IGShopTheme {
         val searchVal = remember { mutableStateOf("Lamba") }
 
@@ -108,5 +139,30 @@ private fun SearchFieldPreview() {
             onValueChange = { value -> Log.i("MyLog", value) },
             onLeadingIconClicked = {}
         )
+    }
+}
+
+@Preview(showSystemUi = true, showBackground = true, backgroundColor = 0xFF2E4552)
+@Composable
+private fun FullScreenSearchFieldPreview() {
+    val searchVal = remember { mutableStateOf("Lamba") }
+
+    IGShopTheme {
+        Column(
+            Modifier
+                .fillMaxSize()
+                .padding(32.dp)
+        ) {
+            SearchField(
+                modifier = Modifier.fillMaxWidth(),
+                searchValue = searchVal,
+                onValueChange = { value ->
+                    searchVal.value = value
+                    Log.i("MyLog", value)
+                },
+                onLeadingIconClicked = {}
+            )
+        }
+
     }
 }
