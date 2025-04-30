@@ -6,9 +6,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.ig81.igshop.data.locale.Database
@@ -16,6 +18,7 @@ import com.ig81.igshop.ui.screens.search.models.SearchEvent
 import com.ig81.igshop.ui.screens.search.models.SearchViewState
 import com.ig81.igshop.ui.screens.search.views.components.SearchField
 import com.ig81.igshop.ui.theme.IGShopTheme
+import kotlinx.coroutines.delay
 
 @Composable
 fun SearchViewDisplay(dispatcher: (SearchEvent) -> Unit) {
@@ -24,7 +27,9 @@ fun SearchViewDisplay(dispatcher: (SearchEvent) -> Unit) {
             SearchViewState.Loading
         )
     }
+
     val searchState = remember { mutableStateOf("") }
+    val focusRequester = remember { FocusRequester() }
 
     Column(
         verticalArrangement = Arrangement.spacedBy(32.dp),
@@ -40,6 +45,7 @@ fun SearchViewDisplay(dispatcher: (SearchEvent) -> Unit) {
                 dispatcher.invoke(SearchEvent.ChangeQuery(it))
             },
             onLeadingIconClicked = { dispatcher.invoke(SearchEvent.CloseScreen) },
+            focusRequester = focusRequester,
             modifier = Modifier.fillMaxWidth()
         )
 
@@ -87,6 +93,11 @@ fun SearchViewDisplay(dispatcher: (SearchEvent) -> Unit) {
                 )
             }
         }
+    }
+
+    LaunchedEffect(Unit) {
+        delay(100)
+        focusRequester.requestFocus()
     }
 }
 

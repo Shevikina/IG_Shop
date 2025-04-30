@@ -26,8 +26,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
@@ -42,12 +46,22 @@ fun SearchField(
     searchValue: String,
     modifier: Modifier = Modifier,
     onValueChange: (String) -> Unit,
-    onLeadingIconClicked: () -> Unit
+    onLeadingIconClicked: () -> Unit,
+    focusRequester: FocusRequester? = null
 ) {
+    val keyboardController = LocalSoftwareKeyboardController.current
+
     TextField(
         value = searchValue,
         onValueChange = onValueChange,
-        modifier = modifier.height(47.dp),
+        modifier = modifier
+            .height(47.dp)
+            .let {
+                if (focusRequester != null) it
+                    .focusRequester(focusRequester = focusRequester)
+                    .onFocusChanged { state -> if (state.isFocused) keyboardController?.show() }
+                else it
+            },
         singleLine = true,
         shape = IGShopTheme.shapes.small,
         placeholder = {
@@ -69,7 +83,9 @@ fun SearchField(
             focusedTextColor = IGShopTheme.colorScheme.onSurface,
             // indicator line
             focusedIndicatorColor = Color.Transparent,
-            unfocusedIndicatorColor = Color.Transparent
+            unfocusedIndicatorColor = Color.Transparent,
+            // cursor
+            cursorColor = IGShopTheme.colorScheme.onSurface
         ),
         textStyle = IGShopTheme.typography.bodyLarge.copy(
             fontSize = 12.sp,
