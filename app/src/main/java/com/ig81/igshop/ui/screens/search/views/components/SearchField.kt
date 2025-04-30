@@ -1,4 +1,4 @@
-package com.ig81.igshop.ui.screens.search.views
+package com.ig81.igshop.ui.screens.search.views.components
 
 import android.util.Log
 import androidx.compose.foundation.clickable
@@ -21,7 +21,6 @@ import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -29,6 +28,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -39,20 +39,20 @@ import com.microsoft.fluent.mobile.icons.R
 
 @Composable
 fun SearchField(
-    searchValue: MutableState<String>,
+    searchValue: String,
     modifier: Modifier = Modifier,
     onValueChange: (String) -> Unit,
     onLeadingIconClicked: () -> Unit
 ) {
     TextField(
-        value = searchValue.value,
+        value = searchValue,
         onValueChange = onValueChange,
         modifier = modifier.height(47.dp),
         singleLine = true,
         shape = IGShopTheme.shapes.small,
         placeholder = {
             Text(
-                text = "Введите название...",
+                text = stringResource(id = com.ig81.igshop.R.string.search_hint),
                 style = IGShopTheme.typography.bodyLarge.copy(
                     fontSize = 12.sp,
                     fontWeight = FontWeight.Medium,
@@ -120,7 +120,7 @@ private fun SearchFieldWithPlaceholderPreview() {
 
         SearchField(
             modifier = Modifier.fillMaxWidth(),
-            searchValue = searchVal,
+            searchValue = searchVal.value,
             onValueChange = { value -> Log.i("MyLog", value) },
             onLeadingIconClicked = {}
         )
@@ -135,7 +135,7 @@ private fun SearchFieldWithValuePreview() {
 
         SearchField(
             modifier = Modifier.fillMaxWidth(),
-            searchValue = searchVal,
+            searchValue = searchVal.value,
             onValueChange = { value -> Log.i("MyLog", value) },
             onLeadingIconClicked = {}
         )
@@ -155,7 +155,7 @@ private fun FullScreenSearchFieldPreview() {
         ) {
             SearchField(
                 modifier = Modifier.fillMaxWidth(),
-                searchValue = searchVal,
+                searchValue = searchVal.value,
                 onValueChange = { value ->
                     searchVal.value = value
                     Log.i("MyLog", value)
