@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -116,19 +117,31 @@ fun SearchField(
             }
         },
         trailingIcon = {
-            Icon(
-                imageVector = ImageVector.vectorResource(id = R.drawable.ic_fluent_search_48_regular),
-                contentDescription = null,
-                modifier = Modifier
-                    .height(24.dp)
-                    .padding(end = 33.dp),
-                tint = Color.White
-            )
+            if (searchValue.isEmpty())
+                Icon(
+                    imageVector = ImageVector.vectorResource(id = R.drawable.ic_fluent_search_48_regular),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .height(24.dp)
+                        .padding(end = 33.dp),
+                    tint = Color.White
+                )
+            else
+                Icon(
+                    imageVector = ImageVector.vectorResource(id = R.drawable.ic_fluent_dismiss_48_regular),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .height(24.dp)
+                        .padding(end = 33.dp)
+                        .clip(CircleShape)
+                        .clickable { onValueChange("") },
+                    tint = Color.White
+                )
         }
     )
 }
 
-@Preview
+@Preview(group = "SearchStates")
 @Composable
 private fun SearchFieldWithPlaceholderPreview() {
     IGShopTheme {
@@ -143,7 +156,7 @@ private fun SearchFieldWithPlaceholderPreview() {
     }
 }
 
-@Preview
+@Preview(group = "SearchStates")
 @Composable
 private fun SearchFieldWithValuePreview() {
     IGShopTheme {
